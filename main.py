@@ -19,7 +19,7 @@ map_mass = [
     ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
 ]
 
-step = 2
+step = 1
 x_len, y_len = 10, 10       # Размеры поля
 start_x, start_y = 1, 1     # Координаты Стартовой точки
 finish_x, finish_y = 9, 9   # Координаты Финишной точки
@@ -94,5 +94,8 @@ while not flag:
     for y in range(y_len):
         for x in range(x_len):
             if map_mass[y][x] == tmp_st:
-                pos(x, y, tmp_st)
+                print(x, y)
+                pos(x, y, str(step + 1))
     step += 1
+
+printMap()
