@@ -91,5 +91,8 @@ def printMap():
 
 while not flag:
     tmp_st = str(step)
-
+    for y in range(y_len):
+        for x in range(x_len):
+            if map_mass[y][x] == tmp_st:
+                pos(x, y, tmp_st)
     step += 1
