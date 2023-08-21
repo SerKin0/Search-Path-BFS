@@ -1,6 +1,16 @@
 import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
 
-x_len, y_len = 10, 10  # Размеры поля
+# Open image from disk
+im = Image.open('1.png')
+na = np.array(im).tolist()
+print(na)
+na = [list(map(lambda t: '#' if t[0] == 0 else "0", i)) for i in na]
+print(na)
+x_len, y_len = 50, 40  # Размеры поля
+map_mass = na
+"""
 map_mass = [
     ['0', '0', '0', '0', '#', '0', '0', '0', '0', '0'],
     ['0', '0', '0', '#', '0', '0', '0', '0', '0', '#'],
@@ -13,11 +23,12 @@ map_mass = [
     ['0', '0', '#', '#', '#', '0', '0', '0', '#', '0'],
     ['0', '0', '0', '0', '0', '0', '#', '0', '#', '0']
 ]
+"""
 
 step = 1  # Шаг
 
 start_x, start_y = 1, 1  # Координаты Стартовой точки
-finish_x, finish_y = 9, 9  # Координаты Финишной точки
+finish_x, finish_y = x_len-1, y_len-1  # Координаты Финишной точки
 
 flag = False  # Достигли мы финиша?
 
@@ -92,6 +103,7 @@ while not flag:
         for x in range(x_len):
             if map_mass[y][x] == tmp_st:
                 pos(x, y, str(step + 1))
+    # printMap(map_mass)
     step += 1
 
 printMap(map_mass, "Массив шагами до финиша:")
@@ -119,8 +131,6 @@ while step != 1:
             x -= 1
             int_map_mass[y][x] = wall
     step -= 1
-
-
 
 printMap(int_map_mass, "Массив с путем на финиш:")
 ax.imshow(int_map_mass)
