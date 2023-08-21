@@ -8,7 +8,7 @@ na = np.array(im).tolist()
 print(na)
 na = [list(map(lambda t: '#' if t[0] == 0 else "0", i)) for i in na]
 print(na)
-x_len, y_len = 50, 40  # Размеры поля
+x_len, y_len = im.size  # Размеры поля
 map_mass = na
 """
 map_mass = [
