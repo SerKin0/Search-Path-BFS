@@ -1,13 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
+import time
 
 # Open image from disk
 im = Image.open('1.png')
 na = np.array(im).tolist()
-print(na)
 na = [list(map(lambda t: '#' if t[0] == 0 else "0", i)) for i in na]
-print(na)
 x_len, y_len = im.size  # Размеры поля
 map_mass = na
 """
@@ -96,6 +95,7 @@ def printMap(mass, title=None):
     print()
 
 
+start = time.time()
 # Пока мы не сможем достичь финиша,...
 while not flag:
     tmp_st = str(step)
@@ -106,8 +106,8 @@ while not flag:
     # printMap(map_mass)
     step += 1
 
-printMap(map_mass, "Массив шагами до финиша:")
-print(f"Count step = {step}")
+# printMap(map_mass, "Массив шагами до финиша:")
+print(f"Count step = {step}\nTime = {time.time() - start}")
 
 int_map_mass = [list(map(lambda t: -1 if t == 'f' or t == "#" else int(t), i)) for i in map_mass]
 fig, ax = plt.subplots()
@@ -132,6 +132,6 @@ while step != 1:
             int_map_mass[y][x] = wall
     step -= 1
 
-printMap(int_map_mass, "Массив с путем на финиш:")
+# printMap(int_map_mass, "Массив с путем на финиш:")
 ax.imshow(int_map_mass)
 plt.show()
