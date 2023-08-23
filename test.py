@@ -110,23 +110,7 @@ fig, ax = plt.subplots()
 x, y = finish_x, finish_y
 wall = -100
 while step != 1:
-    if y - 1 >= 0:
-        if int_map_mass[y - 1][x] + 1 == step:
-            y -= 1
-            int_map_mass[y][x] = wall
-    if x + 2 <= x_len:
-        if int_map_mass[y][x + 1] + 1 == step:
-            x += 1
-            int_map_mass[y][x] = wall
-    if y + 2 <= y_len:
-        if int_map_mass[y + 1][x] + 1 == step:
-            y += 1
-            int_map_mass[y][x] = wall
-    if x - 1 >= 0:
-        if int_map_mass[y][x - 1] + 1 == step:
-            x -= 1
-            int_map_mass[y][x] = wall
-    step -= 1
+
 
 # printMap(int_map_mass, "Массив с путем на финиш:")
 ax.imshow(int_map_mass)
