@@ -71,30 +71,6 @@ def printMap(mass: list, title=None):
 """
 
 
-def bfs_alg(map_mass: list):
-    flag = False
-    start = time.time()
-    step = 1  # Шаг
-    x_len, y_len = len(map_mass[0]), len(map_mass)
-    while not flag:
-        moving = False
-        for y in range(y_len - 1):
-            for x in range(x_len - 1):
-                if map_mass[y][x] == step:
-                    tmp, flag = move(map_mass, x, y, x_len, y_len)
-                    if tmp[0] or tmp[1] or tmp[2] or tmp[3]:
-                        pos(map_mass, x, y, step + 1, tmp)
-                        moving = moving or True
-                    else:
-                        moving = moving or False
-        if not moving and not flag:
-            print("Движение не возможно!")
-            return map_mass
-        step += 1
-    print(f"\tCount step = {step}\n\tTime = {time.time() - start}")
-    return map_mass
-
-
 def return_bfs(map_mass: list):
     start = time.time()
     x, y = 0, 0
@@ -126,4 +102,28 @@ def return_bfs(map_mass: list):
                 map_mass[y][x] = wall
         step -= 1
     print(f"Count step = {step}\nTime = {time.time() - start}")
+    return map_mass
+
+
+def bfs_alg(map_mass: list):
+    flag = False
+    start = time.time()
+    step = 1  # Шаг
+    x_len, y_len = len(map_mass[0]), len(map_mass)
+    while not flag:
+        moving = False
+        for y in range(y_len - 1):
+            for x in range(x_len - 1):
+                if map_mass[y][x] == step:
+                    tmp, flag = move(map_mass, x, y, x_len, y_len)
+                    if tmp[0] or tmp[1] or tmp[2] or tmp[3]:
+                        pos(map_mass, x, y, step + 1, tmp)
+                        moving = moving or True
+                    else:
+                        moving = moving or False
+        if not moving and not flag:
+            print("Движение не возможно!")
+            return map_mass
+        step += 1
+    print(f"\tCount step = {step}\n\tTime = {time.time() - start}")
     return map_mass
