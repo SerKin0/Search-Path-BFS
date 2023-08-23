@@ -24,7 +24,6 @@ map_mass = [list(map(lambda t: f(t), i)) for i in image_mass]
 
 # Создание данных для первого графика
 data1 = bfs_alg(map_mass)
-tmp = data1
 
 # Создание первого графика
 plt.figure()
