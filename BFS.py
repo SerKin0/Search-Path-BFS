@@ -61,16 +61,13 @@ def printMap(mass: list, title=None):
     print()
 
 
-
-
-
 """
     Выводит массив с расставленными значениями пути
      0 - пустые места
      1 - старт
     -1 - стена
     -2 - финиш
-    -100 - обратные путь
+    step * 1.2 - обратные путь
 """
 
 
@@ -94,11 +91,13 @@ def bfs_alg(map_mass: list):
             print("Движение не возможно!")
             return map_mass
         step += 1
-    print(f"Count step = {step}\nTime = {time.time() - start}")
+    print(f"\tCount step = {step}\n\tTime = {time.time() - start}")
     return map_mass
 
 
 def return_bfs(map_mass: list):
+    start = time.time()
+    x, y = 0, 0
     step = 0
     for y_i in range(len(map_mass)):
         for x_j in range(len(map_mass[0])):
@@ -107,7 +106,7 @@ def return_bfs(map_mass: list):
             if step < map_mass[y_i][x_j]:
                 step = map_mass[y_i][x_j]
     y_len, x_len = len(map_mass), len(map_mass[0])
-    wall = -5
+    wall = step * 1.2
     while step > 1:
         if y - 1 >= 0:
             if map_mass[y - 1][x] + 1 == step:
@@ -126,4 +125,5 @@ def return_bfs(map_mass: list):
                 x -= 1
                 map_mass[y][x] = wall
         step -= 1
+    print(f"Count step = {step}\nTime = {time.time() - start}")
     return map_mass
