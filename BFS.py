@@ -101,7 +101,7 @@ def return_bfs(map_mass: list):
                 x -= 1
                 map_mass[y][x] = wall
         step -= 1
-    print(f"Count step = {step}\nTime = {time.time() - start}")
+    print(f"Путь к финишу:\n\tCount step = {step}\n\tTime = {time.time() - start}")
     return map_mass
 
 
@@ -125,5 +125,5 @@ def bfs_alg(map_mass: list):
             print("Движение не возможно!")
             return map_mass
         step += 1
-    print(f"\tCount step = {step}\n\tTime = {time.time() - start}")
+    print(f"Градиент к финишу:\n\tCount step = {step}\n\tTime = {time.time() - start}")
     return map_mass
